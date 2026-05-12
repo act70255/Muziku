@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "style": "sleep_relax",
+    "name": "睡前放鬆",
+    "description": "適合睡前收心、深度休息、緩解壓力的極柔 Lo-fi 背景音樂",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "categories": {
+      "context": "情境詞 - 使用場景",
+      "mood": "情緒詞 - 氛圍",
+      "instrument": "樂器詞",
+      "texture": "質感詞 - 音色效果",
+      "rhythm": "節奏詞 - 穩定度與限制",
+      "purpose": "用途詞 - 使用目的",
+      "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
+    }
+  },
+  "context": [
+    "sleepy night lofi",
+    "late night relax lofi",
+    "moonlight bedroom lofi",
+    "soft lofi for bedtime",
+    "midnight calm lofi",
+    "bedtime lofi",
+    "quiet night lofi"
+  ],
+  "mood": [
+    "deeply calm mood",
+    "dreamy mood",
+    "sleepy and peaceful mood",
+    "calm and cozy mood",
+    "quiet and sleepy mood",
+    "soft and soothing mood"
+  ],
+  "instrument": [
+    "soft piano",
+    "soft pads",
+    "gentle bassline",
+    "very gentle drums",
+    "soft electric piano",
+    "warm keys",
+    "mellow piano chords"
+  ],
+  "texture": [
+    "warm ambience",
+    "soft vinyl texture",
+    "subtle tape hiss",
+    "tape warmth",
+    "gentle ambient texture",
+    "soft reverb"
+  ],
+  "rhythm": [
+    "slow and soothing",
+    "minimal rhythm",
+    "very smooth groove",
+    "slow gentle beat",
+    "no harsh transitions",
+    "soft looping feel"
+  ],
+  "purpose": [
+    "for bedtime relaxation",
+    "for winding down",
+    "for sleep and relaxation",
+    "for deep relaxation before sleep",
+    "for resting and unwinding"
+  ],
+  "restriction": [
+    "no bright lead melody",
+    "no strong snare",
+    "no energetic rhythm",
+    "no sudden volume jump",
+    "keep it soft and sleepy"
+  ]
+}

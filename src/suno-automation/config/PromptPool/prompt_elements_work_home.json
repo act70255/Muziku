@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "style": "work_home",
+    "name": "工作 / 居家辦公",
+    "description": "適合居家工作、長時間作業、輕度生產力場景的 Lo-fi 背景音樂，比讀書組稍有活力",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "categories": {
+      "context": "情境詞 - 使用場景",
+      "mood": "情緒詞 - 氛圍",
+      "instrument": "樂器詞",
+      "texture": "質感詞 - 音色效果",
+      "rhythm": "節奏詞 - 穩定度與限制",
+      "purpose": "用途詞 - 使用目的",
+      "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
+    }
+  },
+  "context": [
+    "morning desk lofi",
+    "home office lofi",
+    "work from home lofi",
+    "cozy room study lofi",
+    "afternoon work lofi",
+    "lofi beats for working",
+    "focused work session lofi"
+  ],
+  "mood": [
+    "fresh and peaceful mood",
+    "focused and productive mood",
+    "light and clear-minded mood",
+    "relaxed productivity mood",
+    "warm and steady mood"
+  ],
+  "instrument": [
+    "bright keys",
+    "clean piano motif",
+    "soft bass",
+    "subtle drums",
+    "light guitar",
+    "warm piano",
+    "soft acoustic guitar"
+  ],
+  "texture": [
+    "clean atmosphere",
+    "soft ambient texture",
+    "light vinyl crackle",
+    "warm tape",
+    "airy reverb",
+    "subtle room sound"
+  ],
+  "rhythm": [
+    "steady beat",
+    "moderate groove",
+    "consistent flow",
+    "minimal and steady groove",
+    "easy-going rhythm"
+  ],
+  "purpose": [
+    "for working",
+    "for productivity",
+    "for deep work",
+    "for long work sessions",
+    "for relaxed productivity",
+    "for focused task completion"
+  ],
+  "restriction": [
+    "no distracting melody",
+    "no heavy bass",
+    "no sudden tempo changes",
+    "keep energy moderate",
+    "no dramatic builds"
+  ]
+}

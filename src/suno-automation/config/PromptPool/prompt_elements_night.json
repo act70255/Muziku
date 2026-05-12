@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "style": "night",
+    "name": "夜晚",
+    "description": "以城市夜景與 synth 調性為核心的 Lo-fi，帶有夢幻與神秘感，適合深夜獨處",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "categories": {
+      "context": "情境詞 - 使用場景",
+      "mood": "情緒詞 - 氛圍",
+      "instrument": "樂器詞",
+      "texture": "質感詞 - 音色效果（夜晚城市氛圍為核心）",
+      "rhythm": "節奏詞 - 穩定度與限制",
+      "purpose": "用途詞 - 使用目的",
+      "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
+    }
+  },
+  "context": [
+    "city lights night lofi",
+    "late night drive lofi",
+    "midnight city lofi",
+    "quiet night streets lofi",
+    "night window view lofi",
+    "midnight hour lofi",
+    "urban night lofi"
+  ],
+  "mood": [
+    "dreamy and calm mood",
+    "mysterious and atmospheric mood",
+    "introspective night mood",
+    "dark but peaceful mood",
+    "quiet and cinematic mood",
+    "lonely but beautiful mood"
+  ],
+  "instrument": [
+    "mellow synth keys",
+    "synthesizer pads",
+    "soft bass",
+    "subtle electronic drums",
+    "piano with reverb",
+    "ambient synth",
+    "lo-fi guitar"
+  ],
+  "texture": [
+    "city night ambience",
+    "distant city sounds",
+    "vinyl crackle",
+    "tape warmth",
+    "soft reverb and delay",
+    "night atmosphere",
+    "subtle electronic texture"
+  ],
+  "rhythm": [
+    "slow groove",
+    "smooth and steady",
+    "minimal night rhythm",
+    "soft electronic beat",
+    "late night tempo",
+    "atmospheric pulse"
+  ],
+  "purpose": [
+    "for late night focus",
+    "for quiet night work",
+    "for midnight relaxation",
+    "for calm night sessions",
+    "for deep late night thinking",
+    "for alone time at night"
+  ],
+  "restriction": [
+    "no energetic beat",
+    "no bright uplifting sounds",
+    "no uplifting melody",
+    "no daytime energy",
+    "keep the night atmosphere"
+  ]
+}

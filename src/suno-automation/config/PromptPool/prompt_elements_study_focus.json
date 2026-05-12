@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "style": "study_focus",
+    "name": "讀書 / 專注",
+    "description": "適合長時間讀書、考試備考、深度學習的 Lo-fi 背景音樂",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "categories": {
+      "context": "情境詞 - 使用場景",
+      "mood": "情緒詞 - 氛圍",
+      "instrument": "樂器詞",
+      "texture": "質感詞 - 音色效果",
+      "rhythm": "節奏詞 - 穩定度與限制",
+      "purpose": "用途詞 - 使用目的",
+      "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
+    }
+  },
+  "context": [
+    "late night study lofi",
+    "midnight library lofi",
+    "study desk lofi",
+    "exam prep lofi",
+    "deep focus study lofi",
+    "calm desk study lofi",
+    "lofi beats for studying",
+    "lofi beats for exams"
+  ],
+  "mood": [
+    "calm and focused mood",
+    "emotionally neutral mood",
+    "quiet and focused mood",
+    "steady and peaceful mood",
+    "introspective but focused mood"
+  ],
+  "instrument": [
+    "warm piano",
+    "soft keys",
+    "mellow bass",
+    "subtle drums",
+    "soft piano chords",
+    "dusty piano",
+    "clean piano motif",
+    "soft percussion"
+  ],
+  "texture": [
+    "vinyl texture",
+    "light vinyl crackle",
+    "tape warmth",
+    "light crackle",
+    "warm tape texture",
+    "subtle ambient texture"
+  ],
+  "rhythm": [
+    "steady and smooth",
+    "consistent rhythm",
+    "minimal groove",
+    "smooth looping feel",
+    "stable and repetitive",
+    "minimal and steady groove"
+  ],
+  "purpose": [
+    "for deep concentration",
+    "for studying",
+    "for exam preparation",
+    "for long study sessions",
+    "for deep focus",
+    "for reading and focus"
+  ],
+  "restriction": [
+    "no vocals",
+    "no dramatic transitions",
+    "no aggressive drums",
+    "no sudden drop",
+    "keep the mood stable"
+  ]
+}

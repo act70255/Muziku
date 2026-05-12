@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "style": "cafe",
+    "name": "咖啡廳",
+    "description": "帶有咖啡廳溫暖氛圍與 jazz 底色的 Lo-fi，適合輕鬆閱讀與社交背景音",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "categories": {
+      "context": "情境詞 - 使用場景",
+      "mood": "情緒詞 - 氛圍",
+      "instrument": "樂器詞",
+      "texture": "質感詞 - 音色效果（咖啡廳氛圍為核心）",
+      "rhythm": "節奏詞 - 穩定度與限制",
+      "purpose": "用途詞 - 使用目的",
+      "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
+    }
+  },
+  "context": [
+    "cozy cafe lofi",
+    "morning coffee shop lofi",
+    "afternoon cafe lofi",
+    "rainy cafe lofi",
+    "corner table cafe lofi",
+    "night cafe lofi",
+    "downtown cafe lofi"
+  ],
+  "mood": [
+    "cozy and warm mood",
+    "relaxed and intimate mood",
+    "lively but calm mood",
+    "warm social atmosphere mood",
+    "cheerful and comfortable mood",
+    "soft and welcoming mood"
+  ],
+  "instrument": [
+    "soft jazz piano",
+    "acoustic guitar",
+    "brushed drums",
+    "walking bass",
+    "mellow electric piano",
+    "light saxophone",
+    "ukulele"
+  ],
+  "texture": [
+    "cafe ambience",
+    "coffee shop background noise",
+    "vinyl crackle",
+    "warm tape texture",
+    "soft jazz reverb",
+    "light room echo"
+  ],
+  "rhythm": [
+    "easy groove",
+    "light jazz swing",
+    "laid-back beat",
+    "smooth and steady",
+    "soft shuffled rhythm",
+    "gentle bounce"
+  ],
+  "purpose": [
+    "for reading and studying",
+    "for casual work",
+    "for relaxed productivity",
+    "for social background music",
+    "for coffee and chill",
+    "for a cozy afternoon"
+  ],
+  "restriction": [
+    "no dark mood",
+    "no heavy bass",
+    "no sudden drops",
+    "no melancholic tone",
+    "keep the cafe warmth"
+  ]
+}

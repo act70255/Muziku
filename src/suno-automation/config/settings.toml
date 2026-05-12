@@ -1,0 +1,53 @@
+# Suno 自動化設定檔
+# 複製此檔案為 settings.toml 並填入實際設定值
+
+[suno]
+# Suno 帳號 Email（用於登入）
+email = "act70255@gmail.com"
+
+# 登入方式：支援 "google" | "discord" | "apple" | "email"
+login_method = "google"
+
+# 瀏覽器是否顯示視窗（false = 背景執行 headless 模式）
+headless = false
+
+# 等待音樂生成的最長秒數（Pro 方案通常 60~180 秒）
+generation_timeout_seconds = 300
+
+# 每次執行產出的歌曲數量（Suno 每次最多 2 首）
+songs_per_run = 2
+
+[output]
+# 下載音樂的本機資料夾路徑（使用絕對路徑或相對路徑）
+download_dir = "./output"
+
+# 檔案命名格式：{timestamp}_{title} | {timestamp}_{index} | {title}
+filename_format = "{timestamp}_{title}"
+
+[workflow]
+# 事件 log 檔案路徑（每次生成完成後追加一筆 JSONL 記錄）
+event_log_path = "./output/events.jsonl"
+
+[prompt]
+# 預設風格（對應 PromptPool/ 中的檔名後綴）
+# 可用值：study_focus | sleep_relax | work_home | rain | cafe | night
+# 留空則退回使用通用元素庫 prompt_elements.json
+default_style = "study_focus"
+
+# ── 風格特化格式（PromptPool）選取數量 ─────────────────────────
+elements_per_context = 1        # 情境詞
+elements_per_mood = 1           # 情緒詞
+elements_per_instrument = 2     # 樂器詞
+elements_per_texture = 2        # 質感詞
+elements_per_rhythm = 1         # 節奏限制詞
+elements_per_purpose = 1        # 用途詞
+elements_per_restriction = 2    # 限制詞
+
+# ── 通用格式（prompt_elements.json）選取數量 ────────────────────
+elements_per_genre = 1
+elements_per_tempo = 1
+elements_per_vocal = 1
+
+# ── 固定附加詞（每次生成都強制加入，不受隨機取樣影響）────────────
+# 關閉方式：fixed_tags = []  或  fixed_tags = [""]  皆可
+fixed_tags = ["no vocals"]
