@@ -9,7 +9,7 @@ headless = true
 generation_timeout_seconds = 300
 
 # 每次執行產出的歌曲數量（Suno 每次最多 2 首）
-songs_per_run = 1
+songs_per_run = 2
 
 [output]
 # 下載音樂的本機資料夾路徑（使用絕對路徑或相對路徑）
