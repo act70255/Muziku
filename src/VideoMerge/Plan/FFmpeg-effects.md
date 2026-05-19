@@ -46,7 +46,7 @@
 參考指令：
 
 ```bash
-ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
+ffmpeg -loop 1 -i cover.jpg -i final-audio.m4a \
   -c:v libx264 -tune stillimage -r 10 -pix_fmt yuv420p \
   -c:a aac -b:a 320k -shortest output.mp4
 ```
@@ -61,7 +61,7 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 參考指令：
 
 ```bash
-ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
+ffmpeg -loop 1 -i cover.jpg -i final-audio.m4a \
   -filter_complex "[0:v]scale=1920:1080,zoompan=z='min(zoom+0.00015,1.15)':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',fps=10[v]" \
   -map "[v]" -map 1:a \
   -c:v libx264 -tune stillimage -pix_fmt yuv420p \
@@ -78,7 +78,7 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 參考指令：
 
 ```bash
-ffmpeg -loop 1 -i cover.jpg -stream_loop -1 -i snow.mp4 -i final.mp3 \
+ffmpeg -loop 1 -i cover.jpg -stream_loop -1 -i snow.mp4 -i final-audio.m4a \
   -filter_complex "[0:v]scale=1920:1080,zoompan=z='min(zoom+0.00015,1.15)':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',fps=10[bg];[1:v]scale=1920:1080[fx];[bg][fx]blend=all_mode='screen':all_opacity=0.35[v]" \
   -map "[v]" -map 2:a \
   -c:v libx264 -tune stillimage -pix_fmt yuv420p \
@@ -97,7 +97,7 @@ ffmpeg -loop 1 -i cover.jpg -stream_loop -1 -i snow.mp4 -i final.mp3 \
 參考指令：
 
 ```bash
-ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
+ffmpeg -loop 1 -i cover.jpg -i final-audio.m4a \
   -filter_complex "[0:v]scale=2200:1238,crop=1920:1080:x='(in_w-out_w)*t/3600':y='(in_h-out_h)/2',eq=brightness=-0.03:saturation=1.1:contrast=1.05,fps=10[v]" \
   -map "[v]" -map 1:a \
   -c:v libx264 -tune stillimage -pix_fmt yuv420p \
@@ -115,7 +115,7 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 參考指令：
 
 ```bash
-ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
+ffmpeg -loop 1 -i cover.jpg -i final-audio.m4a \
   -filter_complex "[0:v]scale=1920:1080[bg];[1:a]showwaves=s=1920x220:mode=line:colors=White@0.7[sw];[bg][sw]overlay=0:860[v]" \
   -map "[v]" -map 1:a \
   -c:v libx264 -tune stillimage -pix_fmt yuv420p \
@@ -280,7 +280,7 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 
 這樣比較容易判斷每一層效果對渲染時間與視覺品質的實際影響。
 
-## 多個 MP3 的處理流程
+## 多個 M4A 音檔的處理流程
 
 ### 整體流程
 
@@ -300,8 +300,8 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 先明確區分三種素材：
 
 - 主視覺圖片，例如 `cover.jpg`
-- 主音樂清單，例如多個 `mp3`
-- 可選的環境音或特效音，例如 `rain.mp3`、`noise.mp3`
+- 主音樂清單，實務上通常是多個 `m4a`
+- 可選的環境音或特效音，例如 `rain.m4a`、`noise.m4a`
 
 建議做法：
 
@@ -313,7 +313,7 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 
 ### 節點 2：驗證音訊格式
 
-多個 `MP3` 不一定可以直接安全串接，因為它們可能有不同的：
+多個 `M4A` 也不一定可以直接安全串接，因為它們可能有不同的：
 
 - codec
 - sample rate
@@ -324,7 +324,7 @@ ffmpeg -loop 1 -i cover.jpg -i final.mp3 \
 建議先用 `ffprobe` 取得基本資訊，例如：
 
 ```bash
-ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -show_entries format=duration -of default=noprint_wrappers=1 song1.mp3
+ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -show_entries format=duration -of default=noprint_wrappers=1 song1.m4a
 ```
 
 若來源規格差異很大，應先走標準化流程，不要直接做 `concat`。
@@ -345,9 +345,9 @@ ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate
 先建立：
 
 ```txt
-file 'song1.mp3'
-file 'song2.mp3'
-file 'song3.mp3'
+file 'song1.m4a'
+file 'song2.m4a'
+file 'song3.m4a'
 ```
 
 再執行：
@@ -369,7 +369,7 @@ ffmpeg -f concat -safe 0 -i music_list.txt -c:a aac -b:a 320k merged.m4a
 範例：
 
 ```bash
-ffmpeg -i music.mp3 -i rain.mp3 -filter_complex "amix=inputs=2:duration=longest" -c:a aac -b:a 320k mixed.m4a
+ffmpeg -i music.m4a -i rain.m4a -filter_complex "amix=inputs=2:duration=longest" -c:a aac -b:a 320k mixed.m4a
 ```
 
 #### 實務判斷原則
@@ -395,7 +395,7 @@ ffmpeg -i music.mp3 -i rain.mp3 -filter_complex "amix=inputs=2:duration=longest"
 範例：
 
 ```bash
-ffmpeg -i song1.mp3 -ar 48000 -ac 2 -c:a aac -b:a 320k normalized-song1.m4a
+ffmpeg -i song1.m4a -ar 48000 -ac 2 -c:a aac -b:a 320k normalized-song1.m4a
 ```
 
 若要進一步處理音量，可加入 `loudnorm`，但建議先完成基本可用流程，再決定是否把音量正規化納入正式管線。
@@ -413,10 +413,10 @@ ffmpeg -i song1.mp3 -ar 48000 -ac 2 -c:a aac -b:a 320k normalized-song1.m4a
 
 範例流程：
 
-1. `song1.mp3 -> normalized-song1.m4a`
-2. `song2.mp3 -> normalized-song2.m4a`
+1. `song1.m4a -> normalized-song1.m4a`
+2. `song2.m4a -> normalized-song2.m4a`
 3. `normalized-* -> merged.m4a`
-4. `merged.m4a + rain.mp3 -> final-audio.m4a`
+4. `merged.m4a + rain.m4a -> final-audio.m4a`
 
 ### 節點 6：圖片與主音軌合成影片
 
@@ -462,7 +462,7 @@ ffmpeg -loop 1 -i cover.jpg -i final-audio.m4a \
 
 ## 常見錯誤與避坑
 
-### 問題 1：多個 MP3 無法直接 concat
+### 問題 1：多個 M4A 無法直接 concat
 
 常見原因：
 

@@ -361,4 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/src/suno-automation/output
+/src/suno-automation/output/*
+/src/suno-automation/config/.browser_state.json

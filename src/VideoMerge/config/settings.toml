@@ -1,0 +1,59 @@
+# VideoMerge 設定檔
+
+[ffmpeg]
+# ffmpeg 與 ffprobe 執行檔名稱或完整路徑
+binary = "ffmpeg"
+probe_binary = "ffprobe"
+
+# true 時允許覆寫既有輸出檔
+overwrite_output = true
+
+[audio]
+# 音訊標準化輸出設定
+codec = "aac"
+bitrate = "320k"
+sample_rate = 48000
+channels = 2
+
+# 是否預設啟用音量正規化
+normalize_by_default = false
+
+# ffmpeg loudnorm 參數
+loudnorm_filter = "loudnorm=I=-16:LRA=11:TP=-1.5"
+
+[video]
+width = 1920
+height = 1080
+fps = 10
+codec = "libx264"
+pixel_format = "yuv420p"
+crf = 22
+
+# 靜態圖影片最佳化
+tune_stillimage = true
+
+# 讓輸出檔更適合串流與上傳平台處理
+faststart = true
+
+[output]
+# 中介檔工作目錄；相對路徑以設定檔所在資料夾為基準
+work_dir = "./output/work"
+merged_audio_filename = "merged.m4a"
+manifest_filename = "concat.txt"
+normalized_dirname = "normalized"
+
+# 會輸出為 <output>.chapters.txt
+chapters_suffix = ".chapters.txt"
+
+[template]
+default_template = "static"
+
+# Ken Burns 每幀縮放速度
+ken_burns_zoom_speed = 0.00015
+
+# 平移模板預設一輪完整平移所需秒數
+pan_seconds = 900
+
+# 波形模板設定
+waveform_height = 220
+waveform_opacity = 0.7

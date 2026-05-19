@@ -9,10 +9,11 @@ import json
 import re
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 import httpx
 
-from suno_client import SunoSong
+from .suno_client import SunoSong
 
 
 class Downloader:
@@ -96,7 +97,7 @@ class Downloader:
     # ── 私有方法 ────────────────────────────────────────────────
 
     def _build_filename(self, song: SunoSong) -> str:
-        """根據格式設定產生檔名（自動加上 .mp3 副檔名）。"""
+        """根據格式設定產生檔名，副檔名依 audio_url 決定。"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         safe_title = self._sanitize_filename(song.title or "untitled")
         safe_id = song.song_id[:8] if song.song_id else "00000000"
@@ -107,7 +108,14 @@ class Downloader:
             .replace("{title}", safe_title)
             .replace("{id}", safe_id)
         )
-        return f"{name}.mp3"
+        return f"{name}{self._resolve_extension(song.audio_url)}"
+
+    @staticmethod
+    def _resolve_extension(audio_url: str) -> str:
+        """從音訊 URL 解析副檔名，未知時退回 .mp3。"""
+        path = urlparse(audio_url).path
+        suffix = Path(path).suffix.lower()
+        return suffix if suffix else ".mp3"
 
     def _write_metadata(
         self,

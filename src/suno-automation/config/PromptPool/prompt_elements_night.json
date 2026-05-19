@@ -2,8 +2,8 @@
   "_meta": {
     "style": "night",
     "name": "夜晚",
-    "description": "以城市夜景與 synth 調性為核心的 Lo-fi，帶有夢幻與神秘感，適合深夜獨處",
-    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "description": "以城市夜景與 synth 調性為核心的 Lo-fi，帶有夢幻與神秘感，適合深夜獨處，預設帶有更完整的鋪陳與收尾",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [編曲結構], [鋪陳發展], [收尾], [限制詞]",
     "categories": {
       "context": "情境詞 - 使用場景",
       "mood": "情緒詞 - 氛圍",
@@ -11,6 +11,9 @@
       "texture": "質感詞 - 音色效果（夜晚城市氛圍為核心）",
       "rhythm": "節奏詞 - 穩定度與限制",
       "purpose": "用途詞 - 使用目的",
+      "structure": "編曲結構詞 - 曲式完整度",
+      "development": "鋪陳發展詞 - 段落成長方式",
+      "ending": "收尾詞 - 尾奏與結束方式",
       "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
     }
   },
@@ -64,6 +67,24 @@
     "for calm night sessions",
     "for deep late night thinking",
     "for alone time at night"
+  ],
+  "structure": [
+    "long-form nocturnal instrumental arrangement",
+    "extended cinematic night structure",
+    "multi-section late-night progression",
+    "fully developed midnight song arc"
+  ],
+  "development": [
+    "slow build with widening synth layers",
+    "gradual rise that stays calm and nocturnal",
+    "evolving motifs across the night atmosphere",
+    "subtle dynamic expansion under city ambience"
+  ],
+  "ending": [
+    "extended midnight outro",
+    "long fading city-night ending",
+    "gentle resolve into the night ambience",
+    "soft final descent"
   ],
   "restriction": [
     "no energetic beat",

@@ -6,7 +6,8 @@ prompt_builder.py
 支援兩種元素庫格式：
   - 通用格式（prompt_elements.json）：genre / mood / instrument / tempo / vocal / production
   - 風格特化格式（PromptPool/prompt_elements_<style>.json）：
-      context / mood / instrument / texture / rhythm / purpose / restriction
+      context / mood / instrument / texture / rhythm / purpose /
+      structure / development / ending / restriction
 """
 
 import json
@@ -23,6 +24,26 @@ if sys.platform == "win32":
 
 # 風格特化元素庫目錄名稱
 POOL_DIR_NAME = "PromptPool"
+STYLE_POOL_CATEGORY_SPECS: tuple[tuple[str, str], ...] = (
+    ("context", "elements_per_context"),
+    ("mood", "elements_per_mood"),
+    ("instrument", "elements_per_instrument"),
+    ("texture", "elements_per_texture"),
+    ("rhythm", "elements_per_rhythm"),
+    ("purpose", "elements_per_purpose"),
+    ("structure", "elements_per_structure"),
+    ("development", "elements_per_development"),
+    ("ending", "elements_per_ending"),
+    ("restriction", "elements_per_restriction"),
+)
+GENERAL_CATEGORY_SPECS: tuple[tuple[str, str], ...] = (
+    ("genre", "elements_per_genre"),
+    ("mood", "elements_per_mood"),
+    ("instrument", "elements_per_instrument"),
+    ("tempo", "elements_per_tempo"),
+    ("vocal", "elements_per_vocal"),
+    ("production", "elements_per_production"),
+)
 
 
 @dataclass
@@ -36,6 +57,9 @@ class PromptConfig:
     elements_per_texture: int = 2       # 質感詞
     elements_per_rhythm: int = 1        # 節奏限制詞
     elements_per_purpose: int = 1       # 用途詞
+    elements_per_structure: int = 1     # 編曲結構詞
+    elements_per_development: int = 1   # 鋪陳發展詞
+    elements_per_ending: int = 1        # 收尾詞
     elements_per_restriction: int = 2   # 限制詞
 
     # ── 通用格式（prompt_elements.json）─────────────────────
@@ -80,7 +104,7 @@ class PromptBuilder:
         self._elements: dict[str, list[str]] = self._load_elements(elements_path)
         self._config: PromptConfig = config or PromptConfig()
         # 偵測格式：有 "context" key → 風格特化格式
-        self._is_lofi_format: bool = "context" in self._elements
+        self._is_style_pool_format: bool = "context" in self._elements
 
     # ── 類別方法 ────────────────────────────────────────────────
 
@@ -151,6 +175,12 @@ class PromptBuilder:
             return []
         return random.sample(pool, min(count, len(pool)))
 
+    def _get_category_specs(self) -> tuple[tuple[str, str], ...]:
+        """依元素庫格式回傳 prompt 組裝順序與取樣設定欄位。"""
+        if self._is_style_pool_format:
+            return STYLE_POOL_CATEGORY_SPECS
+        return GENERAL_CATEGORY_SPECS
+
     # ── 公開方法 ────────────────────────────────────────────────
 
     def build(self) -> str:
@@ -167,24 +197,8 @@ class PromptBuilder:
         """
         sampled: dict[str, list[str]] = {}
 
-        if self._is_lofi_format:
-            # 風格特化格式：依 AI-music-tools.md 架構
-            # 公式：[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]
-            sampled["context"]     = self._sample("context",     self._config.elements_per_context)
-            sampled["mood"]        = self._sample("mood",        self._config.elements_per_mood)
-            sampled["instrument"]  = self._sample("instrument",  self._config.elements_per_instrument)
-            sampled["texture"]     = self._sample("texture",     self._config.elements_per_texture)
-            sampled["rhythm"]      = self._sample("rhythm",      self._config.elements_per_rhythm)
-            sampled["purpose"]     = self._sample("purpose",     self._config.elements_per_purpose)
-            sampled["restriction"] = self._sample("restriction", self._config.elements_per_restriction)
-        else:
-            # 通用格式：原有結構
-            sampled["genre"]      = self._sample("genre",      self._config.elements_per_genre)
-            sampled["mood"]       = self._sample("mood",       self._config.elements_per_mood)
-            sampled["instrument"] = self._sample("instrument", self._config.elements_per_instrument)
-            sampled["tempo"]      = self._sample("tempo",      self._config.elements_per_tempo)
-            sampled["vocal"]      = self._sample("vocal",      self._config.elements_per_vocal)
-            sampled["production"] = self._sample("production", self._config.elements_per_production)
+        for category, config_attr in self._get_category_specs():
+            sampled[category] = self._sample(category, getattr(self._config, config_attr))
 
         # 附加固定標籤，空字串與已出現的跳過（避免重複或污染 prompt）
         all_parts: list[str] = [item for items in sampled.values() for item in items]

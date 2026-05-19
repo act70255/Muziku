@@ -9,7 +9,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from suno_client import SunoSong
+from .suno_client import SunoSong
 
 
 class WorkflowHook:

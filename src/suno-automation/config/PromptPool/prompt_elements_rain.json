@@ -2,8 +2,8 @@
   "_meta": {
     "style": "rain",
     "name": "下雨",
-    "description": "以雨聲為核心環境音，帶有內省與淡淡憂鬱的 Lo-fi 背景音樂",
-    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [限制詞]",
+    "description": "以雨聲為核心環境音，帶有內省與淡淡憂鬱的 Lo-fi 背景音樂，預設帶有更完整的鋪陳與收尾",
+    "formula": "[情境], [情緒], [樂器], [質感], [節奏限制], [用途], [編曲結構], [鋪陳發展], [收尾], [限制詞]",
     "categories": {
       "context": "情境詞 - 使用場景",
       "mood": "情緒詞 - 氛圍",
@@ -11,6 +11,9 @@
       "texture": "質感詞 - 音色效果（雨聲為核心）",
       "rhythm": "節奏詞 - 穩定度與限制",
       "purpose": "用途詞 - 使用目的",
+      "structure": "編曲結構詞 - 曲式完整度",
+      "development": "鋪陳發展詞 - 段落成長方式",
+      "ending": "收尾詞 - 尾奏與結束方式",
       "restriction": "限制詞 - 應避免的元素（直接寫入 prompt）"
     }
   },
@@ -64,6 +67,24 @@
     "for rainy day focus",
     "for calm night sessions",
     "for peaceful alone time"
+  ],
+  "structure": [
+    "long-form rainy instrumental arrangement",
+    "extended cinematic lofi structure",
+    "multi-section rain-soaked progression",
+    "fully developed reflective song arc"
+  ],
+  "development": [
+    "slow build beneath the rain ambience",
+    "gradual layering with restrained dynamics",
+    "evolving harmony while keeping the rainy mood",
+    "subtle movement through repeating rain textures"
+  ],
+  "ending": [
+    "long fading rain-soaked outro",
+    "extended reflective ending",
+    "gentle resolve into rain ambience",
+    "soft final drift"
   ],
   "restriction": [
     "no harsh percussion",

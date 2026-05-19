@@ -2,20 +2,14 @@
 # 複製此檔案為 settings.toml 並填入實際設定值
 
 [suno]
-# Suno 帳號 Email（用於登入）
-email = "act70255@gmail.com"
-
-# 登入方式：支援 "google" | "discord" | "apple" | "email"
-login_method = "google"
-
 # 瀏覽器是否顯示視窗（false = 背景執行 headless 模式）
-headless = false
+headless = true
 
 # 等待音樂生成的最長秒數（Pro 方案通常 60~180 秒）
 generation_timeout_seconds = 300
 
 # 每次執行產出的歌曲數量（Suno 每次最多 2 首）
-songs_per_run = 2
+songs_per_run = 1
 
 [output]
 # 下載音樂的本機資料夾路徑（使用絕對路徑或相對路徑）
@@ -41,6 +35,9 @@ elements_per_instrument = 2     # 樂器詞
 elements_per_texture = 2        # 質感詞
 elements_per_rhythm = 1         # 節奏限制詞
 elements_per_purpose = 1        # 用途詞
+elements_per_structure = 1      # 編曲結構詞
+elements_per_development = 1    # 鋪陳發展詞
+elements_per_ending = 1         # 收尾詞
 elements_per_restriction = 2    # 限制詞
 
 # ── 通用格式（prompt_elements.json）選取數量 ────────────────────
@@ -50,4 +47,4 @@ elements_per_vocal = 1
 
 # ── 固定附加詞（每次生成都強制加入，不受隨機取樣影響）────────────
 # 關閉方式：fixed_tags = []  或  fixed_tags = [""]  皆可
-fixed_tags = ["no vocals"]
+fixed_tags = ["instrumental", "no vocals"]

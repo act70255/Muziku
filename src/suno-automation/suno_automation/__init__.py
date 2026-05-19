@@ -1,0 +1,1 @@
+"""Suno automation package."""
