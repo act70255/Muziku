@@ -3,7 +3,7 @@
 
 [suno]
 # 瀏覽器是否顯示視窗（false = 背景執行 headless 模式）
-headless = true
+headless = false
 
 # 等待音樂生成的最長秒數（Pro 方案通常 60~180 秒）
 generation_timeout_seconds = 300
